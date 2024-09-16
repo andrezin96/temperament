@@ -3,7 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
-import '../../models/models.dart';
+import '../../../models/models.dart';
 
 part 'questions_controller.g.dart';
 
@@ -63,7 +63,7 @@ abstract class _QuestionsController with Store {
       optionA:
           'Não me importo com imprevistos, mas não gosto que ajam como se meu tempo não fosse importante,\nDetesto ser pego de surpresa, me sinto sem chão.',
       optionB:
-          'Não me importo, nem sempre a vida acontece como planejamos e também, amo visitas inesperadas. Se desmarcam comigo. Já arrumo algo para fazer.\nNão me importo, sempre da pra me adaptar as situações.',
+          'Não me importo, nem sempre a vida acontece como planejamos e também, amo visitas inesperadas. Se desmarcam comigo, já arrumo algo para fazer.\nNão me importo, sempre da pra me adaptar as situações.',
     ),
     QuestionsModel(
       label: 'Quando está discutindo com alguém, no calor do momento, como você costuma agir?',
