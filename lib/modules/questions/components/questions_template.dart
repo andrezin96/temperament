@@ -17,7 +17,7 @@ class QuestionsTemplate extends StatelessWidget {
       appBar: AppBar(
         actions: [
           IconButton(
-            onPressed: () => controller.pageController.jumpToPage(0),
+            onPressed: controller.resetQuiz,
             icon: const Icon(Icons.replay_outlined),
           ),
         ],
@@ -30,50 +30,57 @@ class QuestionsTemplate extends StatelessWidget {
             itemCount: controller.questions.length,
             itemBuilder: (context, index) {
               final question = controller.questions[index];
-              return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                child: Observer(
-                  builder: (_) => Column(
-                    children: [
-                      Text(
+              return Observer(
+                builder: (_) => Column(
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      child: Text(
                         '${index + 1}- ${question.label}',
                         style: const TextStyle(fontSize: 18),
                         textAlign: TextAlign.justify,
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 24),
-                        child: QuestionRadio(
-                          title: question.optionB,
-                          groupValue: controller.currentRadioValue,
-                          value: 'a',
-                          onChanged: (value) => controller.setCurrentValue(value!),
-                        ),
-                      ),
-                      QuestionRadio(
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 24),
+                      child: QuestionRadio(
                         title: question.optionB,
                         groupValue: controller.currentRadioValue,
-                        value: 'b',
+                        value: 'a',
                         onChanged: (value) => controller.setCurrentValue(value!),
                       ),
-                      Padding(
-                        padding: const EdgeInsets.only(top: 32),
-                        child: QuestionElevatedButton(
-                          onPressed: () {
-                            controller.result(index);
-                            if (index == 9) {
-                              ScaffoldMessenger.of(context).showSnackBar(
-                                SnackBar(
-                                  content: Text(controller.temperament),
-                                ),
-                              );
-                            }
+                    ),
+                    QuestionRadio(
+                      title: question.optionB,
+                      groupValue: controller.currentRadioValue,
+                      value: 'b',
+                      onChanged: (value) => controller.setCurrentValue(value!),
+                    ),
+                    Container(
+                      height: 80,
+                      padding: const EdgeInsets.only(top: 32),
+                      child: QuestionElevatedButton(
+                        onPressed: () {
+                          final result = controller.next(index);
+                          if (result != null) {
+                            ScaffoldMessenger.of(context).showSnackBar(
+                              SnackBar(
+                                content: Text(result),
+                              ),
+                            );
                             Go.home(context);
-                          },
-                          child: Text(index == 9 ? 'Concluir' : 'Próxima'),
+                          }
+                        },
+                        child: Text(
+                          index == 9 ? 'Concluir' : 'Próxima',
+                          style: const TextStyle(
+                            fontSize: 18,
+                            color: Colors.white,
+                          ),
                         ),
                       ),
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
               );
             },

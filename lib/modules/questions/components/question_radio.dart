@@ -25,6 +25,7 @@ class _QuestionRadioState extends State<QuestionRadio> {
       title: Text(widget.title),
       value: widget.value,
       groupValue: widget.groupValue,
+      activeColor: Colors.blue[700],
       onChanged: widget.onChanged,
     );
   }

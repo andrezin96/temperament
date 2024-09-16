@@ -14,6 +14,7 @@ class QuestionElevatedButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
+        backgroundColor: Colors.blue[700],
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(12),
         ),

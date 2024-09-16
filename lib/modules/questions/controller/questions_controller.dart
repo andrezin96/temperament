@@ -7,16 +7,6 @@ import '../../models/models.dart';
 
 part 'questions_controller.g.dart';
 
-enum firstResult {
-  quente,
-  frio,
-}
-
-enum secondResult {
-  seco,
-  umido,
-}
-
 class QuestionsController = _QuestionsController with _$QuestionsController;
 
 abstract class _QuestionsController with Store {
@@ -39,7 +29,7 @@ abstract class _QuestionsController with Store {
     ),
     QuestionsModel(
       label: 'Quando você está numa festa que não conhece todo mundo, como você costuma se portar?',
-      optionA: 'Conversa com todo mundo, mas evita assunto bobo. / No fim da festa e amigo de todos.',
+      optionA: 'Conversa com todo mundo, mas evita assunto bobo. No fim da festa e amigo de todos.',
       optionB: 'Procura ficar nos lugares mais reservados, conversa educadamente mas geralmente não puxa assunto.',
     ),
     QuestionsModel(
@@ -49,36 +39,36 @@ abstract class _QuestionsController with Store {
     ),
     QuestionsModel(
       label: 'Quando você fica ofendido, quanto tempo esse sentimento perdura em você?',
-      optionA: 'Por muito tempo. / Sempre que lembro fico muito triste ou com muita raiva.',
+      optionA: 'Por muito tempo.\nSempre que lembro fico muito triste ou com muita raiva.',
       optionB: 'Fico com raiva ou triste na hora, mas logo passa, ou as vezes eu nem levo em consideração.',
     ),
     QuestionsModel(
       label: 'Se você pudesse escolher um estilo de vida, qual seria?',
       optionA:
-          'Repleto de desafios onde eu sempre pudesse superar meus limites. / Fzendo algo para impactar, trasformar e ajudar a vida das pessoas.',
+          'Repleto de desafios onde eu sempre pudesse superar meus limites.\nFazendo algo para impactar, transformar e ajudar a vida das pessoas.',
       optionB:
-          'Viajarmuito, conhecer o mundo, ganhar muito dinheiro e ter muitos amigos. / Ter uma condição de vida boa e poder viver sossegado, desfrutando o melhor da vida.',
+          'Viajarmuito, conhecer o mundo, ganhar muito dinheiro e ter muitos amigos.\nTer uma condição de vida boa e poder viver sossegado, desfrutando o melhor da vida.',
     ),
     QuestionsModel(
       label:
           'Imagine uma pessoa em quem você confia e que é importante para você. Quais as chances de você continuar igual com ela depois dela quebrar sua confiança?',
       optionA:
-          'Quase nula! Quebrou minha confiança uma vez só recupera depois de anos ou nunca. / Posso até conviver, mas na primeira oprtuinidade vou me lembrar, sempre vou ter um pé atrás.',
+          'Quase nula! Quebrou minha confiança uma vez só recupera depois de anos ou nunca.\nPosso até conviver, mas na primeira oprtuinidade vou me lembrar, sempre vou ter um pé atrás.',
       optionB:
-          'Muitas chances! Sempre penso que a pessoa pode estar num dia difícil... A vida é muito curta pra brigar por pouco. / Geralmente não ligo, isso não costuma acontecer comigo. Além do mais, não sou muito apegado as pessoas.',
+          'Muitas chances! Sempre penso que a pessoa pode estar num dia difícil... A vida é muito curta pra brigar por pouco.\nGeralmente não ligo, isso não costuma acontecer comigo. Além do mais, não sou muito apegado as pessoas.',
     ),
     QuestionsModel(
       label:
           'Tendo uma rotina rigorosa ou não(geralmente temos pelo menos uma ideia do que fazer num dia). Como você reage quando alguèm quebra sua rotina? Ex: visita inesperada, cancelamento de compromisso, mudança de horário...',
       optionA:
-          'Não me importo com imprevistos, mas não gosto que ajam como se meu tempo não fosse importante, / Detesto ser pego de surpresa, me sinto sem chão.',
+          'Não me importo com imprevistos, mas não gosto que ajam como se meu tempo não fosse importante,\nDetesto ser pego de surpresa, me sinto sem chão.',
       optionB:
-          'Não me importo, nem sempre a vida acontece como planejamos e também, amo visitas inesperadas. Se desmarcam comigo. Já arrumo algo para fazer. / Não me importo, sempre da pra me adaptar as situações.',
+          'Não me importo, nem sempre a vida acontece como planejamos e também, amo visitas inesperadas. Se desmarcam comigo. Já arrumo algo para fazer.\nNão me importo, sempre da pra me adaptar as situações.',
     ),
     QuestionsModel(
       label: 'Quando está discutindo com alguém, no calor do momento, como você costuma agir?',
-      optionA: 'Falo um monte, só depois que vou pensar no que eu disse. / Já tenho resposta na hora, bateu, levou.',
-      optionB: 'Penso muito, mas resposta boa mesmo vem 2 semanas depois. / Travo total, não encontro palavra nenhuma.',
+      optionA: 'Falo um monte, só depois que vou pensar no que eu disse.\nJá tenho resposta na hora, bateu, levou.',
+      optionB: 'Penso muito, mas resposta boa mesmo vem 2 semanas depois.\nTravo total, não encontro palavra nenhuma.',
     ),
   ];
 
@@ -100,10 +90,14 @@ abstract class _QuestionsController with Store {
   String temperament = '';
 
   @action
-  void next(int index) {
+  String? next(int index) {
     if (index < 9) {
+      _addItemToList(index);
       currentIndex = index + 1;
       pageController.jumpToPage(currentIndex);
+      return null;
+    } else {
+      return temperament = _combinationResult();
     }
   }
 
@@ -114,24 +108,27 @@ abstract class _QuestionsController with Store {
   }
 
   @action
-  void saveAnswer(int index) {
+  void resetQuiz() {
+    pageController.jumpToPage(0);
+    currentRadioValue = '';
+  }
+
+  void _addItemToList(int index) {
     if (index <= 4) {
       firstPart.add(currentRadioValue);
       currentRadioValue = '';
-      next(index);
     } else {
       secondPart.add(currentRadioValue);
       currentRadioValue = '';
-      next(index);
     }
   }
 
-  int _countItens(List<String> list) {
+  int _compareItems(List<String> list) {
     return list.where((element) => element == 'a').length;
   }
 
   String _checkFirstPart() {
-    final result = _countItens(firstPart);
+    final result = _compareItems(firstPart);
     if (result >= 3) {
       return 'quente';
     } else {
@@ -140,7 +137,7 @@ abstract class _QuestionsController with Store {
   }
 
   String _checkSecondPart() {
-    final result = _countItens(firstPart);
+    final result = _compareItems(firstPart);
     if (result >= 3) {
       return 'seco';
     } else {
@@ -167,18 +164,4 @@ abstract class _QuestionsController with Store {
         return 'Inconclusivo';
     }
   }
-
-  @action
-  String result(int index) {
-    if (index == 9) {
-      saveAnswer(index);
-      return temperament = _combinationResult();
-    } else {
-      saveAnswer(index);
-      return '';
-    }
-  }
-
-  @action
-  void resetTemperament() => temperament = '';
 }
