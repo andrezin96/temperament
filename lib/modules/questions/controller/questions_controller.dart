@@ -92,9 +92,11 @@ abstract class _QuestionsController with Store {
   @action
   String? next(int index) {
     if (index < 9) {
-      _addItemToList(index);
-      currentIndex = index + 1;
-      pageController.jumpToPage(currentIndex);
+      if (currentRadioValue.isNotEmpty) {
+        _addItemToList(index);
+        currentIndex = index + 1;
+        pageController.jumpToPage(currentIndex);
+      }
       return null;
     } else {
       return temperament = _combinationResult();

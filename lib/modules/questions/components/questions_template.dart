@@ -68,7 +68,7 @@ class QuestionsTemplate extends StatelessWidget {
                                 content: Text(result),
                               ),
                             );
-                            Go.home(context);
+                            Go.pop(context);
                           }
                         },
                         child: Text(
