@@ -34,7 +34,7 @@ class QuestionsTemplate extends StatelessWidget {
                 builder: (_) => Column(
                   children: [
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 24),
+                      padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
                       child: Text(
                         '${index + 1}- ${question.label}',
                         style: const TextStyle(fontSize: 18),
@@ -42,9 +42,9 @@ class QuestionsTemplate extends StatelessWidget {
                       ),
                     ),
                     Padding(
-                      padding: const EdgeInsets.only(top: 24),
+                      padding: const EdgeInsets.only(bottom: 16),
                       child: QuestionRadio(
-                        title: question.optionB,
+                        title: question.optionA,
                         groupValue: controller.currentRadioValue,
                         value: 'a',
                         onChanged: (value) => controller.setCurrentValue(value!),
@@ -68,6 +68,7 @@ class QuestionsTemplate extends StatelessWidget {
                                 content: Text(result),
                               ),
                             );
+                            controller.resetQuiz();
                             Go.pop(context);
                           }
                         },

@@ -21,12 +21,19 @@ class QuestionRadio extends StatefulWidget {
 class _QuestionRadioState extends State<QuestionRadio> {
   @override
   Widget build(BuildContext context) {
-    return RadioListTile(
-      title: Text(widget.title),
-      value: widget.value,
-      groupValue: widget.groupValue,
-      activeColor: Colors.blue[700],
-      onChanged: widget.onChanged,
+    return Container(
+      margin: const EdgeInsets.symmetric(horizontal: 12),
+      decoration: BoxDecoration(
+        border: Border.all(color: Colors.blue.shade700),
+        borderRadius: BorderRadius.circular(12),
+      ),
+      child: RadioListTile(
+        title: Text(widget.title),
+        value: widget.value,
+        groupValue: widget.groupValue,
+        activeColor: Colors.blue[700],
+        onChanged: widget.onChanged,
+      ),
     );
   }
 }

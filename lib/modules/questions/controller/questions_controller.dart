@@ -113,6 +113,9 @@ abstract class _QuestionsController with Store {
   void resetQuiz() {
     pageController.jumpToPage(0);
     currentRadioValue = '';
+    firstPart.clear();
+    secondPart.clear();
+    currentIndex = 0;
   }
 
   void _addItemToList(int index) {
@@ -139,7 +142,7 @@ abstract class _QuestionsController with Store {
   }
 
   String _checkSecondPart() {
-    final result = _compareItems(firstPart);
+    final result = _compareItems(secondPart);
     if (result >= 3) {
       return 'seco';
     } else {
