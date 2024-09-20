@@ -9,7 +9,8 @@ part of 'questions_controller.dart';
 // ignore_for_file: non_constant_identifier_names, unnecessary_brace_in_string_interps, unnecessary_lambdas, prefer_expression_function_bodies, lines_longer_than_80_chars, avoid_as, avoid_annotating_with_dynamic, no_leading_underscores_for_local_identifiers
 
 mixin _$QuestionsController on _QuestionsController, Store {
-  late final _$currentIndexAtom = Atom(name: '_QuestionsController.currentIndex', context: context);
+  late final _$currentIndexAtom =
+      Atom(name: '_QuestionsController.currentIndex', context: context);
 
   @override
   int get currentIndex {
@@ -24,7 +25,8 @@ mixin _$QuestionsController on _QuestionsController, Store {
     });
   }
 
-  late final _$currentRadioValueAtom = Atom(name: '_QuestionsController.currentRadioValue', context: context);
+  late final _$currentRadioValueAtom =
+      Atom(name: '_QuestionsController.currentRadioValue', context: context);
 
   @override
   String get currentRadioValue {
@@ -39,7 +41,8 @@ mixin _$QuestionsController on _QuestionsController, Store {
     });
   }
 
-  late final _$firstPartAtom = Atom(name: '_QuestionsController.firstPart', context: context);
+  late final _$firstPartAtom =
+      Atom(name: '_QuestionsController.firstPart', context: context);
 
   @override
   List<String> get firstPart {
@@ -54,7 +57,8 @@ mixin _$QuestionsController on _QuestionsController, Store {
     });
   }
 
-  late final _$secondPartAtom = Atom(name: '_QuestionsController.secondPart', context: context);
+  late final _$secondPartAtom =
+      Atom(name: '_QuestionsController.secondPart', context: context);
 
   @override
   List<String> get secondPart {
@@ -69,7 +73,8 @@ mixin _$QuestionsController on _QuestionsController, Store {
     });
   }
 
-  late final _$temperamentAtom = Atom(name: '_QuestionsController.temperament', context: context);
+  late final _$temperamentAtom =
+      Atom(name: '_QuestionsController.temperament', context: context);
 
   @override
   String get temperament {
@@ -84,13 +89,13 @@ mixin _$QuestionsController on _QuestionsController, Store {
     });
   }
 
-  late final _$_QuestionsControllerActionController = ActionController(name: '_QuestionsController', context: context);
+  late final _$_QuestionsControllerActionController =
+      ActionController(name: '_QuestionsController', context: context);
 
   @override
   String? next(int index) {
     final _$actionInfo = _$_QuestionsControllerActionController.startAction(
-      name: '_QuestionsController.next',
-    );
+        name: '_QuestionsController.next');
     try {
       return super.next(index);
     } finally {
@@ -101,10 +106,20 @@ mixin _$QuestionsController on _QuestionsController, Store {
   @override
   String setCurrentValue(String value) {
     final _$actionInfo = _$_QuestionsControllerActionController.startAction(
-      name: '_QuestionsController.setCurrentValue',
-    );
+        name: '_QuestionsController.setCurrentValue');
     try {
       return super.setCurrentValue(value);
+    } finally {
+      _$_QuestionsControllerActionController.endAction(_$actionInfo);
+    }
+  }
+
+  @override
+  void resetQuiz() {
+    final _$actionInfo = _$_QuestionsControllerActionController.startAction(
+        name: '_QuestionsController.resetQuiz');
+    try {
+      return super.resetQuiz();
     } finally {
       _$_QuestionsControllerActionController.endAction(_$actionInfo);
     }
