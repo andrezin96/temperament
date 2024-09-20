@@ -19,4 +19,8 @@ abstract class Go {
   static Future<void> result(BuildContext context) {
     return RouterTo.replace(context, ResultRoutes.result);
   }
+
+  static Future<void> about(BuildContext context) {
+    return RouterTo.push(context, AboutRoutes.about);
+  }
 }

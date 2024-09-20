@@ -24,7 +24,7 @@ class HomeTemplate extends StatelessWidget {
               ),
               Container(
                 height: 60,
-                margin: const EdgeInsets.only(top: 32),
+                margin: const EdgeInsets.only(top: 32, bottom: 16),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: Colors.blue[700],
@@ -39,6 +39,15 @@ class HomeTemplate extends StatelessWidget {
                       fontSize: 22,
                       color: Colors.white,
                     ),
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () => Go.about(context),
+                child: Text(
+                  'Como funciona?',
+                  style: TextStyle(
+                    color: Colors.blue[700],
                   ),
                 ),
               ),
