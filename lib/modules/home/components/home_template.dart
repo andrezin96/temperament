@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../components/atoms/atoms.dart';
 import '../../../routes/routes.dart';
 
 class HomeTemplate extends StatelessWidget {
@@ -8,52 +9,42 @@ class HomeTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 32),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              const Text(
-                'Descubra seu\nTemperamento',
-                style: TextStyle(
-                  fontSize: 42,
-                ),
-                textAlign: TextAlign.center,
-              ),
-              Container(
-                height: 60,
-                margin: const EdgeInsets.only(top: 32, bottom: 16),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: Colors.blue[700],
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(12),
-                    ),
-                  ),
-                  onPressed: () => Go.questions(context),
-                  child: const Text(
-                    'Iniciar',
-                    style: TextStyle(
-                      fontSize: 22,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              ),
-              TextButton(
-                onPressed: () => Go.about(context),
-                child: Text(
-                  'Como funciona?',
-                  style: TextStyle(
-                    color: Colors.blue[700],
-                  ),
-                ),
-              ),
-            ],
+      body: ListView(
+        padding: const EdgeInsets.only(top: 96, left: 24, right: 24),
+        children: [
+          const Text(
+            'Descubra seu\nTemperamento',
+            style: TextStyle(
+              fontSize: 42,
+            ),
+            textAlign: TextAlign.center,
           ),
-        ),
+          Container(
+            padding: const EdgeInsets.symmetric(vertical: 16),
+            child: ClipOval(
+              child: Image.asset(
+                'assets/images/temperamentos.png',
+              ),
+            ),
+          ),
+          Container(
+            height: 60,
+            margin: const EdgeInsets.only(top: 32, bottom: 16),
+            child: TemperamentButtons.primary(
+              label: 'Iniciar',
+              onPressed: () => go.questions(context),
+            ),
+          ),
+          TextButton(
+            onPressed: () => go.about(context),
+            child: Text(
+              'Como funciona?',
+              style: TextStyle(
+                color: Colors.blue[700],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

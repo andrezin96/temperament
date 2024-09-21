@@ -1,2 +1,2 @@
-export 'temperament_navigator.dart';
+export 'go.dart';
 export 'temperament_routes.dart';

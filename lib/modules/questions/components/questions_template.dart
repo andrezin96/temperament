@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
-import '../../../routes/temperament_navigator.dart';
+import '../../../routes/go.dart';
 import '../controller/questions_controller.dart';
 import 'question_elevated_button.dart';
 import 'question_radio.dart';
@@ -31,49 +31,59 @@ class QuestionsTemplate extends StatelessWidget {
             itemBuilder: (context, index) {
               final question = controller.questions[index];
               return Observer(
-                builder: (_) => Column(
+                builder: (_) => ListView(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
                   children: [
                     Padding(
-                      padding: const EdgeInsets.only(left: 24, right: 24, bottom: 24),
+                      padding: const EdgeInsets.only(bottom: 24),
                       child: Text(
                         '${index + 1}- ${question.label}',
                         style: const TextStyle(fontSize: 18),
                         textAlign: TextAlign.justify,
                       ),
                     ),
+                    QuestionRadio(
+                      title: question.optionA,
+                      groupValue: controller.currentRadioValue,
+                      value: 'a',
+                      onChanged: (value) => controller.setCurrentValue(value!),
+                    ),
                     Padding(
-                      padding: const EdgeInsets.only(bottom: 16),
+                      padding: const EdgeInsets.only(top: 16, bottom: 32),
                       child: QuestionRadio(
-                        title: question.optionA,
+                        title: question.optionB,
                         groupValue: controller.currentRadioValue,
-                        value: 'a',
+                        value: 'b',
                         onChanged: (value) => controller.setCurrentValue(value!),
                       ),
                     ),
-                    QuestionRadio(
-                      title: question.optionB,
-                      groupValue: controller.currentRadioValue,
-                      value: 'b',
-                      onChanged: (value) => controller.setCurrentValue(value!),
-                    ),
-                    Container(
-                      height: 80,
-                      padding: const EdgeInsets.only(top: 32),
+                    SizedBox(
+                      height: 60,
                       child: QuestionElevatedButton(
                         onPressed: () async {
-                          final result = await controller.next(index);
-                          if (result != null) {
-                            controller.resetQuiz();
-                            await Go.result(context);
+                          if (controller.currentRadioValue.isEmpty) {
+                            if (context.mounted) {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  content: Text('Selecione uma resposta!'),
+                                  duration: Duration(seconds: 2),
+                                  behavior: SnackBarBehavior.floating,
+                                  margin: EdgeInsets.all(16),
+                                ),
+                              );
+                            }
+                          } else {
+                            final result = await controller.next(index);
+                            if (result) {
+                              controller.resetQuiz();
+                              if (context.mounted) {
+                                await go.result(context);
+                              }
+                            }
                           }
                         },
-                        child: Text(
-                          index == 9 ? 'Concluir' : 'Próxima',
-                          style: const TextStyle(
-                            fontSize: 18,
-                            color: Colors.white,
-                          ),
-                        ),
+                        label: index == 9 ? 'Concluir' : 'Próxima',
+                        fontSize: 20,
                       ),
                     ),
                   ],

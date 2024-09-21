@@ -7,6 +7,7 @@ abstract class TemperamentRoutes {
     ...SplashPages.routes,
     ...HomePages.routes,
     ...QuestionsPages.routes,
-    ...AboutPages.routes
+    ...AboutPages.routes,
+    ...ResultPages.routes,
   };
 }

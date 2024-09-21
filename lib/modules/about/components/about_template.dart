@@ -15,7 +15,7 @@ class AboutTemplate extends StatelessWidget {
       body: ListView(
         padding: const EdgeInsets.symmetric(horizontal: 16),
         children: [
-          Text(controller.textoApp),
+          Text(controller.about),
           Container(
             height: 60,
             margin: const EdgeInsets.only(top: 32, bottom: 16),
@@ -26,7 +26,7 @@ class AboutTemplate extends StatelessWidget {
                   borderRadius: BorderRadius.circular(12),
                 ),
               ),
-              onPressed: () => Go.questions(context),
+              onPressed: () => go.questions(context),
               child: const Text(
                 'Iniciar quiz',
                 style: TextStyle(

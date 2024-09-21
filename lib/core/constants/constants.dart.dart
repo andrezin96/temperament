@@ -1,0 +1,1 @@
+export 'temperaments/temperaments.dart';

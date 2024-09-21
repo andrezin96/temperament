@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../routes/temperament_navigator.dart';
+import '../../../routes/go.dart';
 
 class SplashTemplate extends StatefulWidget {
   const SplashTemplate({super.key});
@@ -12,7 +12,11 @@ class SplashTemplate extends StatefulWidget {
 class _SplashTemplateState extends State<SplashTemplate> {
   @override
   void initState() {
-    Future.delayed(const Duration(seconds: 2)).whenComplete(() => Go.home(context));
+    Future.delayed(const Duration(seconds: 2)).whenComplete(() {
+      if (mounted) {
+        go.home(context);
+      }
+    });
     super.initState();
   }
 
@@ -26,7 +30,7 @@ class _SplashTemplateState extends State<SplashTemplate> {
     return const Scaffold(
       body: Center(
         child: Text(
-          'Temperament',
+          'Temperamento',
           style: TextStyle(fontSize: 32),
         ),
       ),

@@ -15,6 +15,7 @@ class _GetItImpl implements Injector {
   void _register() {
     GetIt.I.registerLazySingleton(QuestionsController.new);
     GetIt.I.registerLazySingleton(AboutController.new);
+    GetIt.I.registerLazySingleton(ResultController.new);
   }
 
   @override

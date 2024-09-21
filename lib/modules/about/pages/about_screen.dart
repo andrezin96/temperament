@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 
+import '../../../dependencies/dependencies.dart';
 import '../about.dart';
 import '../components/components.dart';
 
@@ -11,7 +12,7 @@ class AboutScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AboutTemplate(
-      controller: controller,
+      controller: injector.get<AboutController>(),
     );
   }
 }
