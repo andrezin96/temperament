@@ -89,19 +89,16 @@ mixin _$QuestionsController on _QuestionsController, Store {
     });
   }
 
-  late final _$_QuestionsControllerActionController =
-      ActionController(name: '_QuestionsController', context: context);
+  late final _$nextAsyncAction =
+      AsyncAction('_QuestionsController.next', context: context);
 
   @override
-  String? next(int index) {
-    final _$actionInfo = _$_QuestionsControllerActionController.startAction(
-        name: '_QuestionsController.next');
-    try {
-      return super.next(index);
-    } finally {
-      _$_QuestionsControllerActionController.endAction(_$actionInfo);
-    }
+  Future<bool?> next(int index) {
+    return _$nextAsyncAction.run(() => super.next(index));
   }
+
+  late final _$_QuestionsControllerActionController =
+      ActionController(name: '_QuestionsController', context: context);
 
   @override
   String setCurrentValue(String value) {

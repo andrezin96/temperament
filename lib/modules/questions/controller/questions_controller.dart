@@ -3,6 +3,7 @@ import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:mobx/mobx.dart';
 
+import '../../../core/services/services.dart';
 import '../../../models/models.dart';
 
 part 'questions_controller.g.dart';
@@ -90,7 +91,7 @@ abstract class _QuestionsController with Store {
   String temperament = '';
 
   @action
-  String? next(int index) {
+  Future<bool?> next(int index) async {
     if (index < 9) {
       if (currentRadioValue.isNotEmpty) {
         _addItemToList(index);
@@ -99,7 +100,10 @@ abstract class _QuestionsController with Store {
       }
       return null;
     } else {
-      return temperament = _combinationResult();
+      final result = await _writeStorage(KeysStorage.temperament, _combinationResult());
+      if (result) {
+        return true;
+      }
     }
   }
 
@@ -116,6 +120,15 @@ abstract class _QuestionsController with Store {
     firstPart.clear();
     secondPart.clear();
     currentIndex = 0;
+  }
+
+  Future<bool> _writeStorage(String key, dynamic value) async {
+    try {
+      await localStorage.write(KeysStorage.temperament, _combinationResult());
+      return true;
+    } catch (e) {
+      return false;
+    }
   }
 
   void _addItemToList(int index) {

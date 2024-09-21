@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../routes/temperament_navigator.dart';
+import '../../../routes/routes.dart';
 
 class HomeTemplate extends StatelessWidget {
   const HomeTemplate({super.key});

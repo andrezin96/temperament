@@ -60,16 +60,11 @@ class QuestionsTemplate extends StatelessWidget {
                       height: 80,
                       padding: const EdgeInsets.only(top: 32),
                       child: QuestionElevatedButton(
-                        onPressed: () {
-                          final result = controller.next(index);
+                        onPressed: () async {
+                          final result = await controller.next(index);
                           if (result != null) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              SnackBar(
-                                content: Text(result),
-                              ),
-                            );
                             controller.resetQuiz();
-                            Go.pop(context);
+                            await Go.result(context);
                           }
                         },
                         child: Text(
