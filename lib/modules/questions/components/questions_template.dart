@@ -3,6 +3,7 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 
 import '../../../components/atoms/atoms.dart';
 import '../../../routes/go.dart';
+import '../../../theme/theme.dart';
 import '../controller/questions_controller.dart';
 import 'question_card.dart';
 import 'question_radio.dart';
@@ -64,11 +65,16 @@ class QuestionsTemplate extends StatelessWidget {
                           if (controller.currentRadioValue.isEmpty) {
                             if (context.mounted) {
                               ScaffoldMessenger.of(context).showSnackBar(
-                                const SnackBar(
-                                  content: Text('Selecione uma resposta!'),
-                                  duration: Duration(seconds: 2),
+                                SnackBar(
+                                  content: Text(
+                                    'Selecione uma resposta!',
+                                    style: TemperamentTextStyle.secondary.normal
+                                        .copyWith(color: TemperamentColors.offWhiteBlueTint),
+                                  ),
+                                  duration: const Duration(seconds: 2),
                                   behavior: SnackBarBehavior.floating,
-                                  margin: EdgeInsets.all(16),
+                                  margin: const EdgeInsets.all(16),
+                                  backgroundColor: TemperamentColors.primaryBlue,
                                 ),
                               );
                             }
