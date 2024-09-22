@@ -27,11 +27,11 @@ class _SplashTemplateState extends State<SplashTemplate> {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text(
-          'Temperamento',
-          style: TextStyle(fontSize: 32),
+        child: Image.asset(
+          'assets/icon/cerebro.png',
+          scale: 2,
         ),
       ),
     );

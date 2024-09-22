@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 
 import '../../../components/atoms/atoms.dart';
+import '../../../core/core.dart';
 import '../../../routes/routes.dart';
+import '../../../theme/theme.dart';
 
 class HomeTemplate extends StatelessWidget {
   const HomeTemplate({super.key});
@@ -10,37 +12,42 @@ class HomeTemplate extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: ListView(
-        padding: const EdgeInsets.only(top: 96, left: 24, right: 24),
+        padding: const EdgeInsets.only(top: 80, left: 24, right: 24),
         children: [
-          const Text(
-            'Descubra seu\nTemperamento',
-            style: TextStyle(
-              fontSize: 42,
+          TemperamentCard(
+            padding: const EdgeInsets.symmetric(vertical: 24),
+            margin: const EdgeInsets.symmetric(vertical: 16),
+            borderColor: TemperamentColors.offWhiteBlueTint,
+            child: Column(
+              children: [
+                Text(
+                  'QUIZ DO\nTEMPERAMENTO',
+                  style: TemperamentTextStyle.tertiary.exLarge.copyWith(fontSize: 42),
+                  textAlign: TextAlign.center,
+                ),
+                SizedBox(
+                  height: 220,
+                  child: Image.asset(
+                    'assets/icon/cerebro.png',
+                  ),
+                ),
+              ],
             ),
-            textAlign: TextAlign.center,
           ),
-          Container(
-            padding: const EdgeInsets.symmetric(vertical: 16),
-            child: ClipOval(
-              child: Image.asset(
-                'assets/images/temperamentos.png',
-              ),
-            ),
-          ),
-          Container(
+          SizedBox(
             height: 60,
-            margin: const EdgeInsets.only(top: 32, bottom: 16),
-            child: TemperamentButtons.primary(
+            child: TemperamentButton.primary(
               label: 'Iniciar',
               onPressed: () => go.questions(context),
             ),
           ),
-          TextButton(
-            onPressed: () => go.about(context),
-            child: Text(
-              'Como funciona?',
-              style: TextStyle(
-                color: Colors.blue[700],
+          Padding(
+            padding: const EdgeInsets.only(top: 4),
+            child: TextButton(
+              onPressed: () => go.about(context),
+              child: Text(
+                'Como funciona?',
+                style: TemperamentTextStyle.secondary.normal,
               ),
             ),
           ),

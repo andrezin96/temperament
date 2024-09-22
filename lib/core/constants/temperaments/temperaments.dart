@@ -4,7 +4,7 @@ class Temperaments {
   static const List<QuestionsModel> questions = [
     QuestionsModel(
       label: 'Quando você recebe uma má noticia, como você reage?',
-      optionA: 'Tem uma reação rápida, já dala logo alguma coisa.',
+      optionA: 'Tem uma reação rápida, já fala logo alguma coisa.',
       optionB: 'Demora um tempo para assimilar.',
     ),
     QuestionsModel(

@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 
+import '../../../components/atoms/atoms.dart';
 import '../../../routes/go.dart';
 import '../controller/questions_controller.dart';
-import 'question_elevated_button.dart';
+import 'question_card.dart';
 import 'question_radio.dart';
 
 class QuestionsTemplate extends StatelessWidget {
@@ -14,14 +15,6 @@ class QuestionsTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        actions: [
-          IconButton(
-            onPressed: controller.resetQuiz,
-            icon: const Icon(Icons.replay_outlined),
-          ),
-        ],
-      ),
       body: Stack(
         children: [
           PageView.builder(
@@ -32,15 +25,22 @@ class QuestionsTemplate extends StatelessWidget {
               final question = controller.questions[index];
               return Observer(
                 builder: (_) => ListView(
-                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  padding: const EdgeInsets.only(left: 16, right: 16, top: 54),
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(bottom: 24),
-                      child: Text(
-                        '${index + 1}- ${question.label}',
-                        style: const TextStyle(fontSize: 18),
-                        textAlign: TextAlign.justify,
-                      ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        TemperamentIconButton.back(
+                          onPressed: () => go.pop(context),
+                        ),
+                        TemperamentIconButton.restart(
+                          onPressed: controller.resetQuiz,
+                        ),
+                      ],
+                    ),
+                    QuestionCard(
+                      index: (index + 1).toString(),
+                      label: question.label,
                     ),
                     QuestionRadio(
                       title: question.optionA,
@@ -59,7 +59,7 @@ class QuestionsTemplate extends StatelessWidget {
                     ),
                     SizedBox(
                       height: 60,
-                      child: QuestionElevatedButton(
+                      child: TemperamentButton.primary(
                         onPressed: () async {
                           if (controller.currentRadioValue.isEmpty) {
                             if (context.mounted) {

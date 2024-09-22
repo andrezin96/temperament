@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 
+import '../../../core/core.dart';
+import '../../../theme/theme.dart';
+
 class QuestionRadio extends StatefulWidget {
   const QuestionRadio({
     super.key,
@@ -21,17 +24,18 @@ class QuestionRadio extends StatefulWidget {
 class _QuestionRadioState extends State<QuestionRadio> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 12),
-      decoration: BoxDecoration(
-        border: Border.all(color: Colors.blue.shade700),
-        borderRadius: BorderRadius.circular(12),
-      ),
+    return TemperamentCard(
+      borderColor: TemperamentColors.offWhiteBlueTint,
       child: RadioListTile(
-        title: Text(widget.title),
+        title: Text(
+          widget.title,
+          style: TemperamentTextStyle.secondary.medium,
+        ),
         value: widget.value,
         groupValue: widget.groupValue,
-        activeColor: Colors.blue[700],
+        fillColor: const WidgetStatePropertyAll(
+          TemperamentColors.primaryBlue,
+        ),
         onChanged: widget.onChanged,
       ),
     );

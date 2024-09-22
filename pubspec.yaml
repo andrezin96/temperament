@@ -30,3 +30,12 @@ flutter:
   assets:
 
     - assets/images/
+    - assets/icon/
+
+  fonts:
+
+    - family: BarlowCondensed
+      fonts:
+        - asset: assets/fonts/BarlowCondensed-Regular.ttf
+        - asset: assets/fonts/BarlowCondensed-Light.ttf
+        - asset: assets/fonts/BarlowCondensed-Bold.ttf

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
+import '../../../components/atoms/atoms.dart';
+import '../../../core/core.dart';
 import '../../../routes/routes.dart';
+import '../../../theme/theme.dart';
 import '../about.dart';
 
 class AboutTemplate extends StatelessWidget {
@@ -11,29 +14,23 @@ class AboutTemplate extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
       body: ListView(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 50, bottom: 12),
         children: [
-          Text(controller.about),
-          Container(
+          TemperamentCard(
+            padding: const EdgeInsets.all(16),
+            margin: const EdgeInsets.only(bottom: 16),
+            borderColor: TemperamentColors.offWhiteBlueTint,
+            child: Text(
+              controller.about,
+              style: TemperamentTextStyle.secondary.medium,
+            ),
+          ),
+          SizedBox(
             height: 60,
-            margin: const EdgeInsets.only(top: 32, bottom: 16),
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue[700],
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(12),
-                ),
-              ),
+            child: TemperamentButton.primary(
               onPressed: () => go.questions(context),
-              child: const Text(
-                'Iniciar quiz',
-                style: TextStyle(
-                  fontSize: 22,
-                  color: Colors.white,
-                ),
-              ),
+              label: 'Iniciar Quiz',
             ),
           ),
         ],
