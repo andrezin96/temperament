@@ -63,9 +63,9 @@ class Temperaments {
     ),
   ];
 
-  static const String melancolico = '''
-Frio e Seco
-Algumas características de pessoas com temperamento sanguíneo são:
+  static const String sanguineo = '''
+Quente e Úmido
+Pessoas com temperamento sanguíneo são conhecidas por serem:
 
 - Extroversão: São pessoas extrovertidas e sociáveis, que gostam de estar com outras pessoas; 
 - Otimismo: São otimistas e alegres, e veem o copo meio cheio; 
@@ -79,38 +79,38 @@ Algumas características de pessoas com temperamento sanguíneo são:
 ''';
 
   static const String colerico = '''
-Quente e Úmido
-Algumas das suas características incluem:
+Quente e Seco
+Pessoas com temperamento colérico são conhecidas por serem:
 
-- Serem motivadas e orientadas para objetivos 
-- Serem grandes realizadoras no trabalho, na escola ou no lazer 
-- Serem estimuladas por adversidades 
-- Terem habilidade para liderança 
-- Gostam de desafios 
-- Serem diretas e assertivas na comunicação 
-- Preferirem ir direto ao ponto 
-- Poderem parecer bruscas ou impacientes 
-- Terem clareza e objetividade 
+- Líderes naturais: Gostam de liderar e resolver problemas; 
+- Extrovertidas: Preferem estar com outras pessoas;
+- Assertivas: Assumirão o controle e tomam decisões com confiança;
+- Ativas: Têm energia para estar em movimento;
+- Determinadas: São focadas em alcançar seus objetivos; 
+- Competitivas: Gostam de vencer e superar desafios;
+- Impacientes: Querem resultados rápidos e podem se frustrar com atrasos; 
+- Diretos: Podem ser diretos ao ponto de parecerem agressivos;
+- Motivados por desafios: São excelentes estrategistas e realizadores natos;
 ''';
 
   static const String fleumatico = '''
 Frio e Úmido
-Algumas características de uma pessoa fleumática são:
+Pessoas com temperamento fleumático são conhecidas por serem:
 
-- É diplomática, pacífica e mística;
-- É amigável, agradável e alegre;
-- É calma e dificilmente se zanga;
-- Não gosta de confrontos e desavenças;
-- É bom ouvinte;
-- É desprendido e generoso;
-- É constante, paciente, confiável, fiel e leal;
-- É adaptável, embora não goste de mudanças;
-- É motivado pela busca de segurança;
+- Calmas: São pessoas que se mantêm relaxadas e dificilmente se zangam;
+- Introvertidas: Preferem estar sozinhas e valorizam seu espaço pessoal; 
+- Pacientes: São pacientes e gostam de esperar;
+- Racionais: Preferem pensar cuidadosamente antes de agir; 
+- Adaptáveis: São adaptáveis e conseguem se ajustar facilmente a novas situações;
+- Diplomáticas: São pessoas diplomáticas e pacificadoras;
+- Amigáveis: São pessoas amigáveis e agradáveis;
+- Sonhadoras: São pessoas sonhadoras e responsáveis; 
+- Confiáveis: São pessoas confiáveis para responsabilidades ou confidências;
 ''';
 
-  static const String sanguineo = '''
-Quente e Seco
-Pessoas com temperamento melancólico podem ter algumas características, como:
+  static const String melancolico = '''
+Frio e Seco
+Pessoas com temperamento melancólico são conhecidas por serem:
 
 - Sensível: São pessoas sensíveis e se magoam facilmente;
 - Introvertidas: Preferem ficar sozinhas e ter seu próprio espaço; 
