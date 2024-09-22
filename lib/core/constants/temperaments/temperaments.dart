@@ -63,7 +63,7 @@ class Temperaments {
     ),
   ];
 
-  static const String sanguineo = '''
+  static const String melancolico = '''
 Frio e Seco
 Algumas características de pessoas com temperamento sanguíneo são:
 
@@ -108,7 +108,7 @@ Algumas características de uma pessoa fleumática são:
 - É motivado pela busca de segurança;
 ''';
 
-  static const String melancolico = '''
+  static const String sanguineo = '''
 Quente e Seco
 Pessoas com temperamento melancólico podem ter algumas características, como:
 
