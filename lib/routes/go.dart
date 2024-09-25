@@ -17,7 +17,7 @@ abstract class Go {
   void pop(BuildContext context);
 }
 
-class GoImpl implements Go {
+class _GoImpl implements Go {
   @override
   void pop(BuildContext context) {
     Navigator.pop(context);
@@ -52,7 +52,7 @@ class GoImpl implements Go {
   }
 }
 
-class GoTo extends GoImpl {
+class GoTo extends _GoImpl {
   Future<void> home(BuildContext context) {
     return replace(context, HomeRoutes.home);
   }
