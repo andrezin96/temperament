@@ -38,7 +38,7 @@ class Temperaments {
       optionA:
           'Repleto de desafios onde eu sempre pudesse superar meus limites.\nFazendo algo para impactar, transformar e ajudar a vida das pessoas.',
       optionB:
-          'Viajarmuito, conhecer o mundo, ganhar muito dinheiro e ter muitos amigos.\nTer uma condição de vida boa e poder viver sossegado, desfrutando o melhor da vida.',
+          'Viajar muito, conhecer o mundo, ganhar muito dinheiro e ter muitos amigos.\nTer uma condição de vida boa e poder viver sossegado, desfrutando o melhor da vida.',
     ),
     QuestionsModel(
       label:
